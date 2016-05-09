@@ -29,7 +29,7 @@ Unattended-Upgrade::Origins-Pattern {
       "o=Debian,n=jessie-proposed-updates";
       "o=Debian,n=jessie,l=Debian-Security";
 
-      "o=nginx,n=jessie""
+      "o=nginx,n=jessie"
 
         // Archive or Suite based matching:
         // Note that this will silently match a different release after
