@@ -25,15 +25,18 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 						wget \
 						sudo \
 						cron \
+						unattended-upgrades \
 						vim \
 	&& rm -rf /var/lib/apt/lists/*
+
+# Base system
+COPY files/apt-unattended-upgrade/ /etc/apt/apt.conf.d/
 
 # TLS certificate management
 RUN mkdir -p $DATADIR /root/init
 RUN useradd -b $DATADIR -s /bin/bash -M cert
 ADD https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py /usr/local/bin
 ADD https://raw.githubusercontent.com/68b32/CertWatch/master/CertWatch /usr/local/bin/CertWatch
-#ADD files/acme_tiny.py /usr/local/bin
 COPY files/sudo /etc/sudoers.d/cert
 COPY files/certconf /root/init/certconf
 COPY files/etc-CertWatch /etc/CertWatch
@@ -53,7 +56,6 @@ RUN chown cert:cert /usr/local/bin/acme_tiny.py && \
 RUN groupadd webspaceuser
 ADD https://raw.githubusercontent.com/68b32/jailspaces-js/master/js /usr/local/sbin/
 RUN chown root:cert /usr/local/sbin/js && chmod 550 /usr/local/sbin/js
-#COPY files/jailspaces/js /usr/local/sbin/
 COPY files/jailspaces/conf/ /etc/jailspaces/
 COPY files/acme_fallback.conf /etc/nginx/conf.d/
 COPY files/php.ini /etc/php5/fpm/
