@@ -1,0 +1,1 @@
+0 13 * * * export USER=cert; (date && /usr/local/bin/CertWatch 2>&1) >> /data/log/CertWatch.log
