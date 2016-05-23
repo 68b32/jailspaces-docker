@@ -2,6 +2,8 @@
 
 BASEDIR="$1"
 
+
+
 if [ -d "${BASEDIR}/user" -a -d "${BASEDIR}/conf/nginx/conf.d" -a -d "${BASEDIR}/conf/php5/fpm/pool.d" ]; then
 	# Create system user from configuration
 	(ls -1d "${BASEDIR}/user/"* | cut -d'/' -f4; \
@@ -53,6 +55,12 @@ if [ ! -d "${BASEDIR}/cert/.certconf" ]; then
 	cp -r /root/init/certconf "${BASEDIR}/cert/.certconf"
 	chown -R cert:cert "${BASEDIR}/cert/.certconf"
 fi
+
+
+# Upgrade the base system
+echo "> Upgrading the base system..."
+apt-get update > /dev/null
+unattended-upgrade
 
 # Start the services
 service php5-fpm restart
