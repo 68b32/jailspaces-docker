@@ -35,7 +35,7 @@ COPY files/apt-unattended-upgrade/ /etc/apt/apt.conf.d/
 # TLS certificate management
 RUN mkdir -p $DATADIR /root/init
 RUN useradd -b $DATADIR -s /bin/bash -M cert
-ADD https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py /usr/local/bin
+ADD https://raw.githubusercontent.com/68b32/acme-tiny/master/acme_tiny.py /usr/local/bin
 ADD https://raw.githubusercontent.com/68b32/CertWatch/master/CertWatch /usr/local/bin/CertWatch
 COPY files/sudo /etc/sudoers.d/cert
 COPY files/certconf /root/init/certconf
