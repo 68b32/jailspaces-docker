@@ -31,6 +31,7 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 
 # Base system
 COPY files/apt-unattended-upgrade/ /etc/apt/apt.conf.d/
+COPY files/login.defs /etc/
 
 # TLS certificate management
 RUN mkdir -p $DATADIR /root/init
