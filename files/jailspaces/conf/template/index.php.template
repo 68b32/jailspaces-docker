@@ -1,13 +1,14 @@
 <?php
 	isset($_GET['PHPINFO']) && phpinfo() && die;
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>@USERNAME@</title>
 	</head>
 
 	<body>
-		<h1>JailSpace @USERNAME@</h1>
+		<h1>Jailspace @USERNAME@</h1>
 		
 		<p>
 		This webspace was just created.
@@ -17,7 +18,11 @@
 		<ul>
 			<li><a href="?PHPINFO">Inspect PHP configuration</a></li>
 			<li><a href="https://www.ssllabs.com/ssltest/analyze.html?d=<?php echo urlencode($_SERVER['HTTP_HOST']); ?>&amp;hideResults=on&amp;clearCache=on">Test SSL configuration</a></li>
-		<ul>
+		</ul>
+
+		<p>
+		This webspace is powered by <a href="https://www.vennedey.net/jailspaces">Jailspaces</a>.
+		</p>
 
 	</body>
 
